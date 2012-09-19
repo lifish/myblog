@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+</head>
+
+<body>
+<style type="text/css">
+
+.left{
+	float:left;
+	width:200px;
+	height:800px;
+}
+.right{
+	margin-left:205px;
+	width:600px;
+	height:800px;
+	
+}
+</style>
+<div class="left">
+{% for c in content_list %}
+<a href="/{{ userdata.id }}/{{ c.id }}/">{{ c.title }}</a>
+</br>
+{% endfor %}
+<ul>
+{% for y in years %}
+<li>{{ y.year }}</li>
+	<ul>
+	{% for m in y.content %}	
+		<li>{{ m.month }}</li>
+		<ul>		
+			{% for c in m.content %}
+				<li><a href = "/{{userdata.id }}/{{ c.id }}">{{ c.title }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+	</ul>
+{% endfor %}
+<ul>
+
+</br>
+<a href="/{{ userdata.id }}/new">write</a>
+</div>
+<div class="right">
+
+<h1> {{ content_right.title }} </h1>
+<pre> {{ content_right.content }} </pre>
+
+</div>
+</body>
+</html>

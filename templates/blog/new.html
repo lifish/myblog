@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+</head>
+
+<body>
+<style type="text/css">
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.left{
+	float:left;
+	width:200px;
+}
+.right{
+	width:600px;
+	position:relative;
+	
+}
+</style>
+<div class="left">
+{% for c in content_list %}
+{% endfor %}
+left
+</br>
+<a href="/blog/new/">write</a>
+</div>
+<div class="right">
+	right
+<form action="/{{ user_id }}/new/" method="post">
+{% csrf_token %}
+topic<input type="text" name="title"/>
+</br>
+content<textarea name="content" wrap="Physical" rows="10" cols"200">
+</textarea>
+<input type="submit" value="submit"/>
+</form>
+</div>
+</body>
+</html>
